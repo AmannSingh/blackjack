@@ -8,7 +8,7 @@ class CardSuit(Enum):
 
 class Cards:
 
-    def __init__(self, suit: CardSuit, value: int) -> None:
+    def __init__(self, suit: CardSuit, value: str) -> None:
         self.suit = suit
         self.color = 'Red' if suit == CardSuit.DIAMONDS or suit == CardSuit.HEARTS else 'black'
         self.value = value
