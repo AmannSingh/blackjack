@@ -7,7 +7,7 @@ class Player:
         self.total: int = 0
 
     def __str__(self):
-        return f'\ntotal:{self.total}\ncards:\n{str(self.cards)}'
+        return f'\nscore:{self.total}\ncards:\n{str(self.cards)}'
     
    
 
