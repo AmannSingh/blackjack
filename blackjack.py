@@ -1,27 +1,6 @@
 from deck import Deck
 from player import Player
 
-
-def calculateScore(cards:Deck) -> int:
-    total= 0
-    aces = 0 
-
-    for card in cards.deck:
-
-        if card.value == 'J' or card.value == 'Q' or card.value == 'K':
-            total += 10
-        elif card.value == 'A':
-            total += 11
-            aces += 1
-        else:
-            total+= int(card.value)
-
-        if total > 21:
-            total -= 10
-            aces -= 1
- 
-    return total
-
 # Take user input choices:
 #   1. Hit -> get another card 
 #        i. calculate score 
@@ -36,8 +15,13 @@ def calculateScore(cards:Deck) -> int:
 
 class Game:
 
-    def __init__(self, deck):
-        self.deck = deck
+    def __init__(self):
+        
+        # create deck object
+        self.deck = Deck()
+        self.deck.createDeck()
+        self.deck.shuffleDeck()
+        
         self.player = Player()
         self.dealer = Player()
 
@@ -49,10 +33,8 @@ class Game:
             
             if hit:
                 hand.addCard(self.deck.dealCard())
-                self.player.totals[i] = calculateScore(hand)
-                       
-            else:
-                self.player.totals[i] = calculateScore(hand)
+                
+            
         
     def split(self):
         
@@ -79,8 +61,6 @@ if __name__ == "__main__":
     
     p1.hands[0].addCard(deck.dealCard())
     p1.hands[0].addCard(deck.dealCard())
-    
-    p1.totals.append(calculateScore(p1.hands[0]))
     
     print(f'player1 {p1}')
    
